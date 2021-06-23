@@ -1,0 +1,32 @@
+<html>
+
+  <head>
+    <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
+    <script src="./common.js"></script>
+    <script src="./config.js"></script>
+    <link rel="stylesheet" href="./test.css">
+  </head>
+
+  <body>
+    <div id="menu">
+
+    </div>
+
+    <div id="editEvent" style="display:none">
+      <label>Event Name:</label><br>
+      <input type='text' id='newEventName'><br>
+      <label>Event Command:</label><br>
+      <input type='text' id='newEventCommand'><br>
+      <label>Cost:</label><br>
+      <input type='number' id='newEventCost' min='50' max='10000' step='50'><br>
+      <button id="deleteEvent">Delete Event</button>
+      <button id="cancel">Cancel</button>
+      <button id="saveEvent">Save Event</button><br>
+    </div>
+
+    <button id="loadDefaultConfig">Reset Config</button>
+    <button id="clearConfig">Clear Config</button>
+    <button id="newEventElement">New Event</button>
+  </body>
+
+</html>

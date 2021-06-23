@@ -1,0 +1,86 @@
+@font-face {
+  font-family: MyFont;
+  src: url("JetBrains_Mono_Regular_Nerd_Font_Complete.ttf");
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Dark theme styles go here */
+
+  body {
+    background-color: #37474F;
+    color: #DEE4E7;
+  }
+
+  folder:hover {
+    color: white;
+  }
+
+}
+
+@media (prefers-color-scheme: light) {
+  /* Dark theme styles go here */
+
+  body {
+    background-color: #DEE4E7;
+    color: black;
+  }
+
+  folder:hover {
+    color: #37474F;
+  }
+
+}
+
+body {
+  font-family: MyFont;
+  font-size: xx-large;
+}
+
+folder {
+
+}
+
+.open::before {
+  content: "\f0d7\0f07c  ";
+}
+
+.open * {
+  display: block;
+  margin-left: 50px;
+}
+
+.closed::before {
+  content: "\0f0da\0f07b  ";
+}
+
+.closed * {
+  display: none;
+}
+
+event::before {
+  content: "\0f423  ";
+}
+
+event {
+  width: max-content;
+  background-color: #759FBC;
+  border-style: none;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+event:hover {
+  background-color: #5287be;
+}
+
+cost::before {
+  color: #6441A5;
+  content: "\0fc09";
+}
+
+#editEvent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
