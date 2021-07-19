@@ -3,6 +3,7 @@ var config = {
   "this/is/an/event2": {cost:20,command:"/say this is an event 2"},
   "this/is/also/an/event": {cost:30,command:"/say this is also an event"},
   "this/is/also/an/event2": {cost:40,command:"/say this is also an event 2"},
+  "this/is/again/an/event": {cost:30,command:"/say this is also an event"},
   "hello/world": {cost:50,command:"/say hello world"}
 };
 

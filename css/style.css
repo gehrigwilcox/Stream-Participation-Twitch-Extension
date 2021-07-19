@@ -1,6 +1,6 @@
 @font-face {
   font-family: MyFont;
-  src: url("JetBrains_Mono_Regular_Nerd_Font_Complete.ttf");
+  src: url("./fonts/JetBrains_Mono_Regular_Nerd_Font_Complete.ttf");
 }
 
 @media (prefers-color-scheme: dark) {
@@ -38,6 +38,19 @@ body {
 
 folder {
 
+}
+
+folder > *{
+  display: none;
+}
+
+folder:hover > *{
+  display: block;
+  margin-left: 50px;
+}
+
+folder:hover::before {
+  content: "\f0d7\0f07c  ";
 }
 
 .open::before {

@@ -44,3 +44,7 @@ if(typeof window.Twitch !== 'undefined'){
     requestedEvent = "";
   });
 }
+
+window.addEventListener('DOMContentLoaded',()=>{
+  Twitch.ext.bits.getProducts().then(function(products){});
+});
