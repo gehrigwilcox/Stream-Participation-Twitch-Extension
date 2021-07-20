@@ -4,7 +4,9 @@ var config = {
   "this/is/also/an/event": {cost:30,command:"/say this is also an event"},
   "this/is/also/an/event2": {cost:40,command:"/say this is also an event 2"},
   "this/is/again/an/event": {cost:30,command:"/say this is also an event"},
-  "hello/world": {cost:50,command:"/say hello world"}
+  "hello/world": {cost:50,command:"/say hello world"},
+  "test1": {cost:50,command:""},
+  "test2": {cost:50,command:""}
 };
 
 var domLoaded = false;
@@ -30,7 +32,6 @@ function createFolder(folderPath){
 
   /*  Get Parent Folder Element */
   var parentFolder = getFolderElement(parentFolderPath);
-  if(parentFolder.id === 'menu') parentFolder.appendChild(document.createElement('br'));
 
   /*  Create new Folder Element */
   var newFolder = document.createElement('folder');
@@ -39,23 +40,21 @@ function createFolder(folderPath){
   newFolder.className = "closed";
   /*  If folder is closed and clicked, open it
       If folder is open and clicked, close it */
-  newFolder.onclick = () => {
+  newFolder.onclick = (event) => {
     /*
       onclick is called when child elements are clicked too, so click wait
       makes sure that only the bottom level elements onclick is called
     */
-    if(!clickWait){
-      if(newFolder.className.includes("closed")){
-        newFolder.className = newFolder.className.replace("closed","open");
-      }else{
-        newFolder.className = newFolder.className.replace("open","closed");
-      }
-      clickWait = true;
-      setTimeout(()=>{clickWait=false;},1);
+    if(newFolder.className.includes("closed")){
+      newFolder.className = newFolder.className.replace("closed","open");
+    }else{
+      newFolder.className = newFolder.className.replace("open","closed");
     }
+    event.stopPropagation();
   };
   /*  Add new folder to parent folder */
   parentFolder.appendChild(newFolder);
+  if(parentFolder.id === 'menu') parentFolder.appendChild(document.createElement('br'));
 
   return newFolder;
 }
@@ -80,11 +79,9 @@ function createEvent(eventPath,eventData){
   /*  Get the element of the events parent folder */
   var parentElement = getFolderElement(parentPath);
 
-  if(parentElement.id === 'menu') parentElement.appendChild(document.createElement('br'));
-
   /*  Create a new event element and apply data */
   var eventElement = document.createElement('event');
-  eventElement.innerHTML = eventPath.split("/").pop();
+  eventElement.innerHTML = eventPath.split("/").pop() + " ";
   eventElement.id = eventPath;
   eventElement.cost = eventData.cost;
   eventElement.command = eventData.command;
@@ -92,13 +89,17 @@ function createEvent(eventPath,eventData){
   /*  Also show event cost  */
   var costElement = document.createElement('cost');
   costElement.innerHTML = eventData.cost;
-  eventElement.appendChild(document.createElement('br'));
+  //eventElement.appendChild(document.createElement('br'));
   eventElement.appendChild(costElement);
 
-  eventElement.onclick = ()=>{clickEventElement(eventElement)};
+  eventElement.onclick = (event)=>{
+    clickEventElement(eventElement);
+    event.stopPropagation();
+  };
 
   /*  Add event to parent folder  */
   parentElement.appendChild(eventElement);
+  if(parentElement.id === 'menu') parentElement.appendChild(document.createElement('br'));
 }
 
 

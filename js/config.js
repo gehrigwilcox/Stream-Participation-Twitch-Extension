@@ -1,14 +1,9 @@
 function clickEventElement(eventElement){
   /*  Fill in fields with event data  */
-  document.getElementById("newEventName").value = eventElement.id;
-  document.getElementById("newEventCommand").value = eventElement.command;
+  document.getElementById("newEventName").innerHTML = eventElement.id;
+  document.getElementById("newEventCommand").innerHTML = eventElement.command;
   document.getElementById("newEventCost").value = eventElement.cost;
 
-  /*  Make sure delete button deletes event */
-  document.getElementById("deleteEvent").onclick = ()=>{
-    eventElement.remove();
-    document.getElementById("editEvent").style.display = "none";
-  };
   /*  Make sure cancel button hides box */
   document.getElementById("cancel").onclick = ()=>{
     document.getElementById("editEvent").style.display = "none";
@@ -28,42 +23,8 @@ function clickEventElement(eventElement){
 
   /*  Show box  */
   document.getElementById("editEvent").style.display = "block";
-  /*  Make sure nothing else responds to onclick  */
-  clickWait = true;
-  setTimeout(()=>{clickWait=false;},1);
 }
 
-function newEventElement(){
-  /*  Blank out all fields  */
-  document.getElementById("newEventName").value = "";
-  document.getElementById("newEventCommand").value = "";
-  document.getElementById("newEventCost").value = 50;
-
-  /*  Make sure delete button just hides box  */
-  document.getElementById("deleteEvent").onclick = ()=>{
-    document.getElementById("editEvent").style.display = "none";
-  };
-  /*  Make sure cancel button just hides box  */
-  document.getElementById("cancel").onclick = ()=>{
-    document.getElementById("editEvent").style.display = "none";
-  };
-
-  /*  Make sure save button removes any duplicate events and creates a new event  */
-  document.getElementById("saveEvent").onclick = ()=>{
-    try{
-      document.getElementById(document.getElementById("newEventName").value).remove();
-    }catch (e){}
-    createEvent(document.getElementById("newEventName").value,{
-      "cost":document.getElementById("newEventCost").value,
-      "command":document.getElementById("newEventCommand").value
-    });
-    document.getElementById("editEvent").style.display = "none";
-    saveConfig();
-  };
-
-  /*  Show box  */
-  document.getElementById("editEvent").style.display = "block";
-}
 
 function getConfig(){
   /*  Get every event */
@@ -105,22 +66,6 @@ window.addEventListener('DOMContentLoaded',()=>{
       populateMenu();
       saveConfig();
     }
-  };
-
-  document.getElementById('clearConfig').onclick = () => {
-    fetch(verificationServer+"/config",{
-      method: "POST",
-      headers: {
-        'x-extension-jwt': token,
-        'Content-Type': 'application/json'
-      },
-      body: "{}"
-    });
-  };
-
-  /*  Create button to create new event */
-  document.getElementById('newEventElement').onclick = ()=>{
-    newEventElement();
   };
 
 });
