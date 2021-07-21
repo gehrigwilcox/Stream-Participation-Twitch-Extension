@@ -13,6 +13,7 @@ function clickEventElement(eventElement){
   document.getElementById("saveEvent").onclick = ()=>{
     eventElement.cost = document.getElementById("newEventCost").value;
     eventElement.enabled = document.getElementById("isEnabled").checked;
+    eventElement.firstChild.innerHTML = eventElement.cost;
 
     eventElement.classList.remove("enabled");
     eventElement.classList.remove("disabled");
@@ -63,16 +64,3 @@ function saveConfig(){
     body: data
   });
 }
-
-
-window.addEventListener('DOMContentLoaded',()=>{
-  /*  Create button to load default config  */
-  document.getElementById('loadDefaultConfig').onclick = ()=>{
-    if(typeof window.Twitch !== 'undefined'){
-      config = JSON.parse(window.Twitch.ext.configuration.global.content);
-      populateMenu();
-      saveConfig();
-    }
-  };
-
-});
