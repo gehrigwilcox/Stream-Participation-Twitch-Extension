@@ -1,6 +1,6 @@
 @font-face {
   font-family: MyFont;
-  src: url("./fonts/JetBrains_Mono_Regular_Nerd_Font_Complete.ttf");
+  src: url("../fonts/JetBrains_Mono_Regular_Nerd_Font_Complete.ttf");
 }
 
 @media (prefers-color-scheme: dark) {
