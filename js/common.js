@@ -1,12 +1,12 @@
 var config = {
-  "this/is/an/event": {cost:10,command:"/say this is an event"},
-  "this/is/an/event2": {cost:20,command:"/say this is an event 2"},
-  "this/is/also/an/event": {cost:30,command:"/say this is also an event"},
-  "this/is/also/an/event2": {cost:40,command:"/say this is also an event 2"},
-  "this/is/again/an/event": {cost:30,command:"/say this is also an event"},
-  "hello/world": {cost:50,command:"/say hello world"},
-  "test1": {cost:50,command:""},
-  "test2": {cost:50,command:""}
+  "this/is/an/event": {cost:10,command:"/say this is an event",enabled:true},
+  "this/is/an/event2": {cost:20,command:"/say this is an event 2",enabled:true},
+  "this/is/also/an/event": {cost:30,command:"/say this is also an event",enabled:true},
+  "this/is/also/an/event2": {cost:40,command:"/say this is also an event 2",enabled:true},
+  "this/is/again/an/event": {cost:30,command:"/say this is also an event",enabled:true},
+  "hello/world": {cost:50,command:"/say hello world",enabled:true},
+  "test1": {cost:50,command:"",enabled:true},
+  "test2": {cost:50,command:"",enabled:false}
 };
 
 var domLoaded = false;
@@ -85,6 +85,13 @@ function createEvent(eventPath,eventData){
   eventElement.id = eventPath;
   eventElement.cost = eventData.cost;
   eventElement.command = eventData.command;
+  eventElement.enabled = eventData.enabled;
+
+  if(eventElement.enabled){
+    eventElement.classList.add("enabled");
+  } else {
+    eventElement.classList.add("disabled");
+  }
 
   /*  Also show event cost  */
   var costElement = document.createElement('cost');

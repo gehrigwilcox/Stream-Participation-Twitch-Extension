@@ -3,6 +3,7 @@ function clickEventElement(eventElement){
   document.getElementById("newEventName").innerHTML = eventElement.id;
   document.getElementById("newEventCommand").innerHTML = eventElement.command;
   document.getElementById("newEventCost").value = eventElement.cost;
+  document.getElementById("isEnabled").checked = eventElement.enabled;
 
   /*  Make sure cancel button hides box */
   document.getElementById("cancel").onclick = ()=>{
@@ -14,9 +15,10 @@ function clickEventElement(eventElement){
     try{
       document.getElementById(document.getElementById("newEventName").value).remove();
     }catch(e){}
-    createEvent(document.getElementById("newEventName").value,{
+    createEvent(document.getElementById("newEventName").innerHTML,{
       "cost":document.getElementById("newEventCost").value,
-      "command":document.getElementById("newEventCommand").value
+      "command":document.getElementById("newEventCommand").innerHTML,
+      "enabled":document.getElementById("isEnabled").checked
     });
     document.getElementById("editEvent").style.display = "none";
   };

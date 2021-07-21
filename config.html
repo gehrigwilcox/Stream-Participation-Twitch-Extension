@@ -4,7 +4,7 @@
     <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/config.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/configStyle.css">
   </head>
 
   <body>
@@ -19,6 +19,13 @@
       <p id='newEventCommand'></p>
       <label>Cost:</label><br>
       <input type='number' id='newEventCost' min='50' max='10000' step='50'><br>
+      <p>Enabled:</p>
+      <label class='switch'>
+        <input type='checkbox' id='isEnabled'>
+        <span class='slider round'></span>
+      </label>
+      <br>
+      <br>
       <button id="cancel">Cancel</button>
       <button id="saveEvent">Save Event</button><br>
     </div>

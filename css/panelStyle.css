@@ -1,0 +1,148 @@
+@font-face {
+  font-family: MyFont;
+  src: url("./fonts/JetBrains_Mono_Regular_Nerd_Font_Complete.ttf");
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Dark theme styles go here */
+
+  body {
+    background-color: #37474F;
+    color: #DEE4E7;
+  }
+
+  folder:hover {
+    color: white;
+  }
+
+}
+
+@media (prefers-color-scheme: light) {
+  /* Dark theme styles go here */
+
+  body {
+    background-color: #DEE4E7;
+    color: black;
+  }
+
+  folder:hover {
+    color: #37474F;
+  }
+
+}
+
+body {
+  font-family: MyFont;
+  font-size: large;
+}
+
+.open::before {
+  content: "\f0d7\0f07c  ";
+}
+
+.open * {
+  display: block;
+  margin-left: 20px;
+}
+
+.closed::before {
+  content: "\0f0da\0f07b  ";
+}
+
+.closed * {
+  display: none;
+}
+
+event::before {
+  content: "\0f423  ";
+}
+
+event {
+  width: max-content;
+  background-color: #759FBC;
+  border-style: none;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+event:hover {
+  background-color: #5287be;
+}
+
+cost::before {
+  color: #6441A5;
+  content: "\0fc09";
+}
+
+#editEvent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.switch {
+  position:relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/*  Hide default checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/*  The slider  */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/*  Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.disabled {
+  display: none;
+}
