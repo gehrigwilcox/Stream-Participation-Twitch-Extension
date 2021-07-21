@@ -5,6 +5,10 @@ function clickEventElement(eventElement){
 
   requestedEvent = eventElement.id;
 
+  document.getElementById('selectedEvent').innerHTML = requestedEvent.split("/").pop();
+
+  document.getElementById('checkout').style.display = "flex";
+
   if(typeof window.Twitch !== 'undefined'){
     //Make sure client is connected
     fetch(verificationServer,{
@@ -38,10 +42,12 @@ if(typeof window.Twitch !== 'undefined'){
       })
     });
     requestedEvent = "";
+    document.getElementById('checkout').style.display = "none";
   });
 
   window.Twitch.ext.bits.onTransactionCancelled(()=>{
     requestedEvent = "";
+    document.getElementById('checkout').style.display = "none";
   });
 }
 
