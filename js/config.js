@@ -11,16 +11,20 @@ function clickEventElement(eventElement){
   };
   /*  Make sure save button removes previous event, removes any duplicate events, and creates new event */
   document.getElementById("saveEvent").onclick = ()=>{
-    eventElement.remove();
-    try{
-      document.getElementById(document.getElementById("newEventName").value).remove();
-    }catch(e){}
-    createEvent(document.getElementById("newEventName").innerHTML,{
-      "cost":document.getElementById("newEventCost").value,
-      "command":document.getElementById("newEventCommand").innerHTML,
-      "enabled":document.getElementById("isEnabled").checked
-    });
+    eventElement.cost = document.getElementById("newEventCost").value;
+    eventElement.enabled = document.getElementById("isEnabled").checked;
+
+    eventElement.classList.remove("enabled");
+    eventElement.classList.remove("disabled");
+
+    if(eventElement.enabled){
+      eventElement.classList.add("enabled");
+    } else {
+      eventElement.classList.add("disabled");
+    }
+
     document.getElementById("editEvent").style.display = "none";
+    saveConfig();
   };
 
   /*  Show box  */
@@ -38,7 +42,8 @@ function getConfig(){
     if(typeof events[element].command === 'undefined') continue;
     ret[events[element].id] = {
       "cost":events[element].cost,
-      "command": events[element].command
+      "command": events[element].command,
+      "enabled": events[element].enabled
     };
   }
 

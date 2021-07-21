@@ -54,7 +54,7 @@ function createFolder(folderPath){
   };
   /*  Add new folder to parent folder */
   parentFolder.appendChild(newFolder);
-  if(parentFolder.id === 'menu') parentFolder.appendChild(document.createElement('br'));
+  //if(parentFolder.id === 'menu') parentFolder.appendChild(document.createElement('br'));
 
   return newFolder;
 }
@@ -106,7 +106,7 @@ function createEvent(eventPath,eventData){
 
   /*  Add event to parent folder  */
   parentElement.appendChild(eventElement);
-  if(parentElement.id === 'menu') parentElement.appendChild(document.createElement('br'));
+  //if(parentElement.id === 'menu') parentElement.appendChild(document.createElement('br'));
 }
 
 

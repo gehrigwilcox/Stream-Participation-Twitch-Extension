@@ -150,3 +150,8 @@ input:checked + .slider:before {
 .disabled {
   color: red;
 }
+
+#menu folder::after,event::after{
+  content: "\a";
+  white-space: pre;
+}
