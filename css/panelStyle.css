@@ -46,41 +46,60 @@ body {
 }
 
 .open::before {
-  content: "\f0d7\0f07c  ";
+  content: "\0fb0b";
 }
 
-.open * {
-  display: block;
-  margin-left: 20px;
+.open {
+  position: fixed;
+  background-color: #37474F;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  overflow-x: auto;
 }
 
-.closed::before {
-  content: "\0f0da\0f07b  ";
-}
 
-.closed * {
-  display: none;
-}
-
-event::before {
-  content: "\0f423  ";
-}
-
-event {
-  width: max-content;
+folder:not(.open),event {
+  text-align: center;
+  width: auto;
+  height: auto;
   background-color: #759FBC;
   border-style: none;
   border: 2px solid;
   border-radius: 5px;
 }
 
-event:hover {
+.closed::before {
+  content: "\0f07b\A";
+  white-space: pre;
+}
+
+.closed * {
+  display: none;
+}
+
+event {
+  width: auto;
+  height: auto;
+  background-color: #759FBC;
+  border-style: none;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+event:hover,folder:not(.open):hover {
   background-color: #5287be;
 }
 
 cost::before {
   color: #6441A5;
-  content: "\0fc09";
+  content: "\A\0fc09";
+  white-space: pre;
 }
 
 #editEvent {
@@ -191,7 +210,15 @@ input:checked + .slider:before {
   100% { transform: translate(-50%,-50%) rotate(360deg); }
 }
 
-#menu folder::after,event::after{
-  content: "\a";
-  white-space: pre;
+#menu {
+  position: fixed;
+  background-color: #37474F;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
