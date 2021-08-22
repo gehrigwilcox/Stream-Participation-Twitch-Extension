@@ -25,17 +25,16 @@
   /* Dark theme styles go here */
 
   body {
-    background-color: #DEE4E7;
-    background: #DEE4E7;
+    background-color: #37474F;
+    background: #37474F;
     color: #DEE4E7;
   }
-
   #checkout {
-    background: #DEE4E7;
+    background: #37474F;
   }
 
   folder:hover {
-    color: #37474F;
+    color: white;
   }
 
 }

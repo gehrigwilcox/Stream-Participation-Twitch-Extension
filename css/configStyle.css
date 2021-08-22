@@ -21,12 +21,12 @@
   /* Dark theme styles go here */
 
   body {
-    background-color: #DEE4E7;
-    color: black;
+    background-color: #37474F;
+    color: #DEE4E7;
   }
 
   folder:hover {
-    color: #37474F;
+    color: white;
   }
 
 }
